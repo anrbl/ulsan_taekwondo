@@ -1,0 +1,163 @@
+.main_visual {
+    position: relative;
+    overflow: hidden;
+
+    .main_tks {
+        position: relative;
+        height: 500px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 0 0;
+            width: 1100px;
+            clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+            background: url(../images/main_img01.jpg) no-repeat center 80%/cover;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            right: $half-2;
+            transform: translate(0, -50%);
+
+            width: 480px;
+            color: $c-6;
+            text-align: right;
+        }
+
+        .slogan {
+            margin: 0 0 20px 0;
+
+            p {
+                font-size: 15px;
+                font-weight: 400;
+                letter-spacing: 4px;
+                margin: 0 0 10px 0;
+            }
+
+            h3 {
+                font-size: 72px;
+                font-family: 'KIMM_Bold';
+
+                strong {
+                    color: $c-3;
+                }
+            }
+        }
+
+        .text_slide {
+            position: relative;
+            z-index: 999;
+            padding: 5px 10px;
+            background: $c-w;
+            color: $c-6;
+            text-align: right;
+            border: $solid;
+
+            &::after {
+                content: "NEWS";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translate(0, -50%);
+                padding: 7px 8px;
+                font-weight: 500;
+                color: $c-w;
+                background: $c-6;
+                border: 1px solid $c-6;
+                text-align: center;
+            }
+
+            p {
+                font-size: 14px;
+                line-height: 18px;
+
+            }
+        }
+
+
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        right: $half-2;
+        transform: translate(0, -50%);
+        width: 100%;
+
+        &>i {
+            padding: 5px;
+            font-size: 20px;
+            background: $c-line;
+            color: $c-6;
+
+            &.left {
+                position: absolute;
+                top: 128px;
+                right: 40px;
+            }
+
+            &.right {
+                position: absolute;
+                top: 128px;
+                right: 0;
+            }
+        }
+
+    }
+}
+
+@media (max-width:768px) {
+    .main_visual {
+        .main_tks {
+            height: 240px;
+
+            &::before {
+                width: 100%;
+                clip-path: none;
+                background: url(../images/main_img01.jpg) no-repeat center center/cover;
+                background-size: 200%;
+                opacity: 50%;
+            }
+
+            .text {
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                right: 50%;
+                transform: translate(50%, 0);
+
+                width: auto;
+                text-align: center;
+            }
+
+            .slogan {
+                margin: 0 0 32px 0;
+
+                p {
+                    font-size: 15px;
+                    font-weight: 400;
+                    letter-spacing: 1px;
+                    margin: 0 -1px 8px 0;
+                }
+
+                h3 {
+                    font-size: 48px;
+                }
+            }
+
+            .text_slide {
+                width: calc(100vw - 30px);
+
+                &::after {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .arrow {
+            display: none;
+        }
+    }
+}

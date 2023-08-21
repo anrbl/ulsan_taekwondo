@@ -1,0 +1,105 @@
+.main_service {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 0 0;
+        z-index: -1;
+
+        margin: 0 auto;
+        background: $c-wb;
+    }
+
+    .quick_menu {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 16px;
+
+        li {
+            strong {
+                position: relative;
+                display: block;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 100px;
+                text-align: center;
+                text-transform: uppercase;
+                color: $c-w;
+
+
+
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: $half-2;
+                    right: -55px;
+                    z-index: -1;
+                    background: $c-sub;
+                    clip-path: polygon(0 0, 100% 0%, 93% 100%, 0% 100%);
+                    opacity: 80%;
+                }
+            }
+
+            a {
+                position: relative;
+
+                display: block;
+                font-size: 16px;
+                line-height: 100px;
+                text-align: center;
+                color: $c-3;
+                transition: 0.5s;
+
+                &::before {
+                    content: "\F270";
+                    font-family: bootstrap-icons;
+                    vertical-align: -3px;
+                    font-size: 16px;
+                    margin: 0 4px 0 0;
+                    color: $c-9;
+                    transition: 0.5s;
+                }
+            }
+
+            &:hover {
+                a {
+                    color: $c-main;
+
+                    &::before {
+                        color: $c-sub;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width:768px) {
+    .main_service {
+        .quick_menu {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+
+            li {
+                strong {
+                    font-size: 18px;
+                    line-height: 40px;
+                    color: $c-main;
+
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                a {
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+}
