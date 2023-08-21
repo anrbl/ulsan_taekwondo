@@ -167,9 +167,14 @@ body {
 }
 
 .section {
-  padding: 88px 0;
+  padding: 64px 0;
 }
 
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 0;
+  }
+}
 .inner {
   max-width: 1440px;
   margin: 0 auto;
@@ -241,7 +246,6 @@ p {
   top: 0;
   z-index: 1000;
   background: #fff;
-  border-bottom: #f2f2f2;
 }
 .header .head_wrap {
   display: flex;
@@ -362,7 +366,7 @@ p {
     top: 30px;
     right: 24px;
     z-index: 1000;
-    width: 36px;
+    width: 32px;
     height: 36px;
     display: block;
   }
@@ -420,9 +424,110 @@ p {
   .header .mopen.on::after {
     transform: translateY(-6px) rotate(90deg);
   }
-  .header .gnb > ul,
-  .header .user {
+  .header .head_wrap h1 {
+    z-index: 1000;
+  }
+  .header .gnb::before {
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    background: #fff;
+    box-shadow: none;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+  }
+  .header .gnb > ul {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 999;
+    width: 100%;
+    padding: 120px 8px 0;
+    flex-direction: column;
+    gap: 14px;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+  }
+  .header .gnb > ul > li {
+    line-height: 1;
+  }
+  .header .gnb > ul > li::before {
     display: none;
+  }
+  .header .gnb > ul > li:not(:first-child)::after {
+    display: none;
+  }
+  .header .gnb > ul > li > a {
+    position: relative;
+    line-height: 48px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid #f2f2f2;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header .gnb > ul > li > a::after {
+    content: "\f285";
+    font-family: Bootstrap-icons;
+    vertical-align: -2px;
+    color: #999;
+  }
+  .header .gnb > ul > li .sub {
+    position: static;
+    top: 0;
+    transform: translate(0, 0);
+    height: 100%;
+    width: 100%;
+    display: none;
+    transition: 0s;
+  }
+  .header .gnb:hover::before {
+    height: 100vh;
+  }
+  .header .gnb:hover > ul > li .sub {
+    height: auto;
+    transform: translate(0, 0);
+  }
+  .header .gnb.on::before {
+    left: 0;
+    transition-delay: 0.8s;
+  }
+  .header .gnb.on > ul {
+    left: 0;
+    transition-delay: 0.8s;
+  }
+  .header .user {
+    position: fixed;
+    bottom: 0;
+    left: -100%;
+    z-index: 1000;
+    width: 100%;
+    justify-content: center;
+    gap: 48px;
+    background: #444;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+  }
+  .header .user > li {
+    position: relative;
+    line-height: 48px;
+  }
+  .header .user > li a {
+    color: #f7f8f9;
+  }
+  .header .user > li:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -24px;
+    transform: translate(0, -50%);
+    width: 1px;
+    height: 12px;
+    background: #666;
+  }
+  .header .user.on {
+    left: 0;
+    transition-delay: 0.8s;
   }
 }
 .main_visual {
@@ -519,7 +624,8 @@ p {
 
 @media (max-width: 768px) {
   .main_visual .main_tks {
-    height: 240px;
+    height: 300px;
+    overflow: hidden;
   }
   .main_visual .main_tks::before {
     width: 100%;
@@ -527,14 +633,13 @@ p {
             clip-path: none;
     background: url(../images/main_img01.jpg) no-repeat center center/cover;
     background-size: 200%;
-    opacity: 50%;
+    opacity: 30%;
   }
   .main_visual .main_tks .text {
     position: absolute;
-    top: auto;
-    bottom: 0;
+    top: 50%;
     right: 50%;
-    transform: translate(50%, 0);
+    transform: translate(50%, -50%);
     width: auto;
     text-align: center;
   }
@@ -625,12 +730,20 @@ p {
 }
 
 @media (max-width: 768px) {
+  .main_service {
+    padding: 32px 0;
+  }
   .main_service .quick_menu {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
+  .main_service .quick_menu li.tit {
+    grid-column: 1/4;
+    grid-row: 1/1;
+    text-align: center;
+  }
   .main_service .quick_menu li strong {
-    font-size: 18px;
+    font-size: 22px;
     line-height: 40px;
     color: #3e0f7c;
   }
@@ -638,229 +751,18 @@ p {
     display: none;
   }
   .main_service .quick_menu li a {
+    font-size: 15px;
     line-height: 40px;
+    text-align: left;
+    padding: 0 8px;
+    background: #fff;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    border-radius: 4px;
   }
-}
-.main_notice .content {
-  display: grid;
-  grid-template-columns: 1fr 1fr 600px;
-  gap: 24px;
-}
-.main_notice .content .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.main_notice .list {
-  padding: 15px 20px;
-  background: #f7f8f9;
-  border-top: 1px solid #ddd;
-}
-.main_notice .list > li {
-  position: relative;
-}
-.main_notice .list > li:not(:first-child)::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(221, 221, 221, 0.5);
-}
-.main_notice .list > li > a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  line-height: 45px;
-}
-.main_notice .list > li:hover > a {
-  color: #3e0f7c;
-}
-.main_notice .list p {
-  position: relative;
-  width: 224px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.main_notice .list p::before {
-  content: "·";
-  font-family: xeicon;
-  font-size: 12px;
-  color: #999;
-  margin: 0 10px 0 0;
-}
-.main_notice .list span {
-  font-size: 12px;
-  color: #999;
-}
-.main_notice .gallery {
-  position: relative;
-  display: grid;
-  grid-template-columns: 224px 376px;
-  overflow: hidden;
-}
-.main_notice .gallery .gallery_slide .itm {
-  height: 300px;
-}
-.main_notice .gallery .gallery_slide .itm.itm01 {
-  background: url(../images/mainNR01.jpg) no-repeat fixed center center/cover;
-}
-.main_notice .gallery .gallery_slide .itm.itm02 {
-  background: url(../images/mainNR02.jpg) no-repeat fixed center center/cover;
-}
-.main_notice .gallery .gallery_slide .itm.itm03 {
-  background: url(../images/mainNR03.jpg) no-repeat fixed center center/cover;
-}
-.main_notice .gallery .gallery_slide .itm.itm04 {
-  background: url(../images/mainNR04.jpg) no-repeat fixed center center/cover;
-}
-.main_notice .gallery .gallery_slide .itm.itm05 {
-  background: url(../images/mainNR05.jpg) no-repeat fixed center center/cover;
-}
-.main_notice .gallery .gallery_text_slide {
-  width: 100%;
-  background: #f7f8f9;
-  border-top: 1px solid #ddd;
-}
-.main_notice .gallery .gallery_text_slide .desc {
-  height: 100%;
-  padding: 40px 30px;
-}
-.main_notice .gallery .gallery_text_slide .desc strong {
-  display: block;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  margin: 0 0 20px 0;
-}
-.main_notice .gallery .gallery_text_slide .desc span {
-  font-size: 14px;
-  color: #666;
-}
-.main_notice .gallery .arrow {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-.main_notice .gallery .arrow i {
-  padding: 10px;
-  font-size: 20px;
-  background: #fff;
-  color: #666;
-}
-.main_notice .gallery .arrow i.left {
-  position: absolute;
-  bottom: 0;
-  right: 40px;
-}
-.main_notice .gallery .arrow i.right {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border-left: 1px solid #f2f2f2;
-}
-
-@media (max-width: 768px) {
-  .main_notice {
-    display: none;
-  }
-}
-.main_taekwondo .content {
-  position: relative;
-  max-width: calc(100% - (100% - 1410px) / 2 - 132px);
-  margin: 0 0 0 auto;
-}
-.main_taekwondo .teak_title {
-  position: absolute;
-  top: 50%;
-  left: -132px;
-  transform: translate(0, -50%);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.main_taekwondo .teak_title li strong {
-  display: block;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 50px;
-  width: 100px;
-  padding: 0 0 0 16px;
-  color: #666;
-  background: #fff;
-  transition: 0.5s;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  cursor: pointer;
-}
-.main_taekwondo .teak_title li.on strong {
-  width: 172px;
-  color: #fff;
-  background: #8d1891;
-}
-.main_taekwondo .taek_theory .itm {
-  position: relative;
-  height: 480px;
-  border-radius: 100px 0 0 100px;
-}
-.main_taekwondo .taek_theory .itm.itm01 {
-  background: url(../images/taekwondo01.jpg) no-repeat 70% 60%/cover;
-}
-.main_taekwondo .taek_theory .itm.itm02 {
-  background: url(../images/taekwondo02.jpg) no-repeat center 30%/cover;
-}
-.main_taekwondo .taek_theory .itm.itm03 {
-  background: url(../images/taekwondo03.jpg) no-repeat center 40%/cover;
-}
-.main_taekwondo .taek_theory .itm.itm04 {
-  background: url(../images/taekwondo04.jpg) no-repeat left 70%/cover;
-}
-.main_taekwondo .taek_theory .itm.itm05 {
-  background: url(../images/taekwondo05.jpg) no-repeat right 65%/cover;
-}
-.main_taekwondo .taek_theory .itm::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 0 0;
-  z-index: -1;
-  background: linear-gradient(to right, rgba(153, 153, 153, 0.1) 20%, rgba(34, 34, 34, 0.4) 100%);
-  border-radius: 100px 0 0 100px;
-}
-.main_taekwondo .taek_theory .desc {
-  position: absolute;
-  top: 250px;
-  right: calc(100% - 1410px + 132px);
-  width: 380px;
-  text-align: right;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-.main_taekwondo .taek_theory .desc h3 {
-  font-size: 56px;
-  font-family: "KIMM_Bold";
-  margin: 0 0 8px 0;
-  color: #fff;
-}
-.main_taekwondo .taek_theory .desc p {
-  color: #f2f2f2;
-  margin: 0 0 32px 0;
-}
-.main_taekwondo .taek_theory .desc a {
-  display: inline-block;
-  padding: 10px 30px;
-  background: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .main_taekwondo {
-    display: none;
+  .main_service .quick_menu li a::before {
+    font-size: 12px;
+    vertical-align: -1px;
   }
 }
 .main_visitor .content {
@@ -986,8 +888,332 @@ p {
 }
 
 @media (max-width: 768px) {
-  .main_visitor {
-    display: none;
+  .main_visitor .content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .main_visitor .vis_left li {
+    padding: 24px;
+  }
+  .main_visitor .vis_center {
+    order: -1;
+    padding: 40px 32px;
+  }
+  .main_visitor .vis_center .slogan b {
+    font-size: 22px;
+  }
+  .main_visitor .vis_center .slogan span {
+    font-size: 22px;
+    color: #444;
+  }
+  .main_visitor .vis_center .slogan strong {
+    font-size: 48px;
+  }
+  .main_visitor .vis_center p {
+    font-size: 14px;
+  }
+}
+.main_taekwondo .content {
+  position: relative;
+  max-width: calc(100% - (100% - 1410px) / 2 - 132px);
+  margin: 0 0 0 auto;
+}
+.main_taekwondo .teak_title {
+  position: absolute;
+  top: 50%;
+  left: -132px;
+  transform: translate(0, -50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.main_taekwondo .teak_title li strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 50px;
+  width: 100px;
+  padding: 0 0 0 16px;
+  color: #666;
+  background: #fff;
+  transition: 0.5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.main_taekwondo .teak_title li.on strong {
+  width: 172px;
+  color: #fff;
+  background: #8d1891;
+}
+.main_taekwondo .taek_theory .itm {
+  position: relative;
+  height: 480px;
+  border-radius: 100px 0 0 100px;
+}
+.main_taekwondo .taek_theory .itm.itm01 {
+  background: url(../images/taekwondo01.jpg) no-repeat 70% 60%/cover;
+}
+.main_taekwondo .taek_theory .itm.itm02 {
+  background: url(../images/taekwondo02.jpg) no-repeat center 30%/cover;
+}
+.main_taekwondo .taek_theory .itm.itm03 {
+  background: url(../images/taekwondo03.jpg) no-repeat center 40%/cover;
+}
+.main_taekwondo .taek_theory .itm.itm04 {
+  background: url(../images/taekwondo04.jpg) no-repeat left 70%/cover;
+}
+.main_taekwondo .taek_theory .itm.itm05 {
+  background: url(../images/taekwondo05.jpg) no-repeat right 65%/cover;
+}
+.main_taekwondo .taek_theory .itm::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 0;
+  z-index: -1;
+  background: linear-gradient(to right, rgba(153, 153, 153, 0.1) 20%, rgba(34, 34, 34, 0.4) 100%);
+  border-radius: 100px 0 0 100px;
+}
+.main_taekwondo .taek_theory .desc {
+  position: absolute;
+  top: 250px;
+  right: calc(100% - 1410px + 132px);
+  width: 380px;
+  text-align: right;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.main_taekwondo .taek_theory .desc h3 {
+  font-size: 56px;
+  font-family: "KIMM_Bold";
+  margin: 0 0 8px 0;
+  color: #fff;
+}
+.main_taekwondo .taek_theory .desc p {
+  color: #f2f2f2;
+  margin: 0 0 32px 0;
+}
+.main_taekwondo .taek_theory .desc a {
+  display: inline-block;
+  padding: 10px 30px;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .main_taekwondo .teak_title {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+    background: #f7f8f9;
+  }
+  .main_taekwondo .teak_title li {
+    border: 1px solid #f2f2f2;
+  }
+  .main_taekwondo .teak_title li strong {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  .main_taekwondo .teak_title li.on {
+    border: 1px solid #8d1891;
+  }
+  .main_taekwondo .teak_title li.on strong {
+    width: 100%;
+  }
+  .main_taekwondo .teak_title li:nth-child(2) {
+    border-left: none;
+  }
+  .main_taekwondo .teak_title li:nth-child(3) {
+    border-left: none;
+  }
+  .main_taekwondo .teak_title li:nth-child(4) {
+    border-top: none;
+    border-left: none;
+  }
+  .main_taekwondo .teak_title li:nth-child(5) {
+    border-top: none;
+  }
+  .main_taekwondo .taek_theory .itm {
+    height: 550px;
+    border-radius: 0px;
+  }
+  .main_taekwondo .taek_theory .itm.itm01 {
+    background: url(../images/taekwondo01.jpg) no-repeat 40% 60%/cover;
+  }
+  .main_taekwondo .taek_theory .itm.itm02 {
+    background: url(../images/taekwondo02.jpg) no-repeat 40% 30%/cover;
+  }
+  .main_taekwondo .taek_theory .itm.itm04 {
+    background: url(../images/taekwondo04.jpg) no-repeat 60% 70%/cover;
+  }
+  .main_taekwondo .taek_theory .itm.itm05 {
+    background: url(../images/taekwondo05.jpg) no-repeat 55% bottom/cover;
+  }
+  .main_taekwondo .taek_theory .itm::before {
+    background: linear-gradient(to bottom, rgba(153, 153, 153, 0.1) 20%, rgba(0, 0, 0, 0.7) 100%);
+    border-radius: 0px;
+  }
+  .main_taekwondo .taek_theory .desc {
+    top: auto;
+    bottom: 40px;
+    right: 50%;
+    transform: translate(50%, 0);
+    text-align: center;
+    width: 100%;
+  }
+  .main_taekwondo .taek_theory .desc h3 {
+    font-size: 44px;
+  }
+  .main_taekwondo .taek_theory .desc p {
+    font-size: 15px;
+    padding: 0 15px;
+    margin: 0 0 24px 0;
+  }
+}
+.main_notice .content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 600px;
+  gap: 24px;
+}
+.main_notice .content .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main_notice .list {
+  padding: 15px 20px;
+  background: #f7f8f9;
+  border-top: 1px solid #ddd;
+}
+.main_notice .list > li {
+  position: relative;
+}
+.main_notice .list > li:not(:first-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(221, 221, 221, 0.5);
+}
+.main_notice .list > li > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 45px;
+}
+.main_notice .list > li:hover > a {
+  color: #3e0f7c;
+}
+.main_notice .list p {
+  position: relative;
+  width: 224px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.main_notice .list p::before {
+  content: "·";
+  font-family: xeicon;
+  font-size: 12px;
+  color: #999;
+  margin: 0 10px 0 0;
+}
+.main_notice .list span {
+  font-size: 12px;
+  color: #999;
+}
+.main_notice .gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: 224px 376px;
+  overflow: hidden;
+}
+.main_notice .gallery .gallery_slide .itm {
+  height: 300px;
+}
+.main_notice .gallery .gallery_slide .itm.itm01 {
+  background: url(../images/mainNR01.jpg) no-repeat center center/cover;
+}
+.main_notice .gallery .gallery_slide .itm.itm02 {
+  background: url(../images/mainNR02.jpg) no-repeat center center/cover;
+}
+.main_notice .gallery .gallery_slide .itm.itm03 {
+  background: url(../images/mainNR03.jpg) no-repeat center center/cover;
+}
+.main_notice .gallery .gallery_slide .itm.itm04 {
+  background: url(../images/mainNR04.jpg) no-repeat center center/cover;
+}
+.main_notice .gallery .gallery_slide .itm.itm05 {
+  background: url(../images/mainNR05.jpg) no-repeat center center/cover;
+}
+.main_notice .gallery .gallery_text_slide {
+  width: 100%;
+  background: #f7f8f9;
+  border-top: 1px solid #ddd;
+}
+.main_notice .gallery .gallery_text_slide .desc {
+  height: 100%;
+  padding: 40px 30px;
+}
+.main_notice .gallery .gallery_text_slide .desc strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  margin: 0 0 20px 0;
+}
+.main_notice .gallery .gallery_text_slide .desc span {
+  font-size: 14px;
+  color: #666;
+}
+.main_notice .gallery .arrow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.main_notice .gallery .arrow i {
+  padding: 10px;
+  font-size: 20px;
+  background: #fff;
+  color: #666;
+}
+.main_notice .gallery .arrow i.left {
+  position: absolute;
+  bottom: 0;
+  right: 40px;
+}
+.main_notice .gallery .arrow i.right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-left: 1px solid #f2f2f2;
+}
+
+@media (max-width: 768px) {
+  .main_notice .content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .main_notice .gallery {
+    display: block;
+    max-width: calc(100vw - 30px);
+    width: 100%;
+  }
+  .main_notice .gallery .gallery_slide .itm {
+    width: 100%;
+    height: 250px;
+  }
+  .main_notice .gallery .gallery_text_slide .desc {
+    padding: 24px 20px 30px 20px;
   }
 }
 .footer {
@@ -1100,7 +1326,7 @@ p {
 
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 0;
+    padding: 40px 0 70px 0;
   }
   .footer .foot_wrap {
     display: block;
@@ -1167,8 +1393,19 @@ p {
     right: 0;
   }
   .to_top i {
-    width: 40px;
-    height: 40px;
+    position: relative;
+    width: 60px;
+    height: 60px;
     background: #3e0f7c;
+    border-radius: 16px 0 0 0;
+  }
+  .to_top i::after {
+    content: "TOP";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 16px;
   }
 }/*# sourceMappingURL=style.css.map */

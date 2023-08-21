@@ -111,22 +111,22 @@
 @media (max-width:768px) {
     .main_visual {
         .main_tks {
-            height: 240px;
+            height: 300px;
+            overflow: hidden;
 
             &::before {
                 width: 100%;
                 clip-path: none;
                 background: url(../images/main_img01.jpg) no-repeat center center/cover;
                 background-size: 200%;
-                opacity: 50%;
+                opacity: 30%;
             }
 
             .text {
                 position: absolute;
-                top: auto;
-                bottom: 0;
+                top: 50%;
                 right: 50%;
-                transform: translate(50%, 0);
+                transform: translate(50%, -50%);
 
                 width: auto;
                 text-align: center;

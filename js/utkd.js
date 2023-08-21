@@ -52,20 +52,6 @@ $(function () {
     });
 
     //동영상 
-    $('#taekwonVideo').YTPlayer({
-        videoURL: 'https://youtu.be/p6ATxIlWPt4',
-        containment: '#video',
-        autoPlay: false,
-        mute: true,
-        showControls: false,
-        startAt: 2,
-    });
-    $('.main_taekwondo .pause').on('click', function () {
-        $('#taekwonVideo').YTPPause();
-    });
-    $('.main_taekwondo .play').on('click', function () {
-        $('#taekwonVideo').YTPPlay();
-    });
 
     // 갤러리
     $('.gallery_slide').slick({
@@ -91,6 +77,20 @@ $(function () {
 
     //모바일 
     $('.mopen').on('click', function () {
-        $(this).toggleClass('on')
+        $(this).toggleClass('on');
+        $('.gnb').toggleClass('on');
+        $('.user').toggleClass('on');
+    });
+    $('.gnb>ul>li>a').on('click', function (e) {
+        if ($('.gnb').hasClass('on')) {
+            e.preventDefault(e);
+            $(this).next().stop().slideToggle();
+            $(this).parent().siblings().find('.sub').stop().slideUp();
+        }
+    });
+    $('.gnb').on('wheel touchmove', function (e) {
+        if ($(this).hasClass('on')) {
+            e.preventDefault();
+        }
     })
 });

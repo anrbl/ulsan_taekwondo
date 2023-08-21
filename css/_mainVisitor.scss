@@ -142,6 +142,39 @@
 
 @media (max-width:768px) {
     .main_visitor {
-        display: none;
+        .content {
+            grid-template-columns: repeat(1, 1fr);
+
+        }
+
+        .vis_left {
+            li {
+                padding: 24px;
+            }
+        }
+
+        .vis_center {
+            order: -1;
+            padding: 40px 32px;
+
+            .slogan {
+                b {
+                    font-size: 22px;
+                }
+
+                span {
+                    font-size: 22px;
+                    color: $c-4;
+                }
+
+                strong {
+                    font-size: 48px;
+                }
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
     }
 }

@@ -116,6 +116,99 @@
 
 @media (max-width:768px) {
     .main_taekwondo {
-        display: none;
+
+        .teak_title {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            width: 100%;
+            background: $c-wb;
+
+            li {
+                border: $solid-w;
+
+                strong {
+                    width: 100%;
+                    text-align: center;
+                    padding: 0;
+                }
+
+                &.on {
+                    border: 1px solid $c-sub;
+
+                    strong {
+                        width: 100%
+                    }
+                }
+
+                &:nth-child(2) {
+                    border-left: none;
+                }
+
+                &:nth-child(3) {
+                    border-left: none;
+                }
+
+                &:nth-child(4) {
+                    border-top: none;
+                    border-left: none;
+                }
+
+                &:nth-child(5) {
+                    border-top: none;
+                }
+            }
+        }
+
+        .taek_theory {
+            .itm {
+                height: 550px;
+                border-radius: 0px;
+
+                &.itm01 {
+                    background: url(../images/taekwondo01.jpg) no-repeat 40% 60%/cover;
+                }
+
+                &.itm02 {
+                    background: url(../images/taekwondo02.jpg) no-repeat 40% 30%/cover;
+                }
+
+                &.itm04 {
+                    background: url(../images/taekwondo04.jpg) no-repeat 60% 70%/cover;
+                }
+
+                &.itm05 {
+                    background: url(../images/taekwondo05.jpg) no-repeat 55% bottom/cover;
+                }
+
+                &::before {
+                    background: linear-gradient(to bottom, rgba($color: $c-9, $alpha: 0.1) 20%, rgba($color: $c-b, $alpha: 0.7) 100%);
+                    border-radius: 0px;
+                }
+            }
+
+            .desc {
+                top: auto;
+                bottom: 40px;
+                right: 50%;
+                transform: translate(50%, 0);
+                text-align: center;
+                width: 100%;
+
+                h3 {
+                    font-size: 44px;
+                }
+
+                p {
+                    font-size: 15px;
+                    padding: 0 15px;
+                    margin: 0 0 24px 0;
+                }
+            }
+        }
     }
 }
