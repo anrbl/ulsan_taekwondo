@@ -11,7 +11,7 @@
         gap: 8px;
 
         li {
-            padding: 24px;
+            padding: 24px 24px 8px 24px;
             background: $c-wb;
             border-radius: 8px;
             border: $solid-w;
@@ -22,7 +22,7 @@
                 font-weight: 700;
                 color: $c-main;
                 text-align: center;
-                margin: 0 0 24px 0;
+                margin: 0 0 16px 0;
             }
 
             p {
@@ -32,7 +32,9 @@
 
                 font-size: 14px;
                 color: $c-9;
-                height: 64px;
+                height: 88px;
+                border-radius: 4px;
+                background: $c-w;
             }
         }
     }
