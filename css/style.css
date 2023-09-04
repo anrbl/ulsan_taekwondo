@@ -545,7 +545,7 @@ p {
   width: 1100px;
   -webkit-clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
           clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
-  background: url(../images/main_img01.jpg) no-repeat center 80%/cover;
+  background: url(../images/main_img01.jpg) no-repeat center 30%/cover;
 }
 .main_visual .main_tks .text {
   position: absolute;
@@ -776,7 +776,7 @@ p {
   gap: 8px;
 }
 .main_visitor .vis_left li {
-  padding: 32px 24px;
+  padding: 24px;
   background: #f7f8f9;
   border-radius: 8px;
   border: 1px solid #f2f2f2;
@@ -787,7 +787,7 @@ p {
   font-weight: 700;
   color: #3e0f7c;
   text-align: center;
-  margin: 0 0 16px 0;
+  margin: 0 0 24px 0;
 }
 .main_visitor .vis_left li p {
   display: flex;
@@ -959,7 +959,7 @@ p {
   background: url(../images/taekwondo02.jpg) no-repeat center 30%/cover;
 }
 .main_taekwondo .taek_theory .itm.itm03 {
-  background: url(../images/taekwondo03.jpg) no-repeat center 40%/cover;
+  background: url(../images/taekwondo03.jpg) no-repeat center 80%/cover;
 }
 .main_taekwondo .taek_theory .itm.itm04 {
   background: url(../images/taekwondo04.jpg) no-repeat left 70%/cover;
@@ -1050,7 +1050,7 @@ p {
     background: url(../images/taekwondo02.jpg) no-repeat 40% 30%/cover;
   }
   .main_taekwondo .taek_theory .itm.itm04 {
-    background: url(../images/taekwondo04.jpg) no-repeat 60% 70%/cover;
+    background: url(../images/taekwondo04.jpg) no-repeat 50% 90%/cover;
   }
   .main_taekwondo .taek_theory .itm.itm05 {
     background: url(../images/taekwondo05.jpg) no-repeat 55% bottom/cover;
